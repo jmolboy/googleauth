@@ -12,7 +12,7 @@ go get github.com/jmolboy/googleauth
 
 
 ## 使用
-### 获取base32后的秘钥
+#### 获取base32后的秘钥
 
 ```go
 
@@ -22,15 +22,7 @@ go get github.com/jmolboy/googleauth
 
 ```
 
-
-### 基于秘钥获取Code
-
-```go
-code,_ := googleauth.GetCode(secretKey)
-fmt.Println("code:",code)
-```
-
-### 秘钥生成二维码
+#### 秘钥生成二维码
 
 ```go
 img,_ :=googleauth.QrCode(secretKey,"jmol","jmolboy",200)
@@ -38,9 +30,16 @@ img,_ :=googleauth.QrCode(secretKey,"jmol","jmolboy",200)
 ```
 
 
-### 秘钥生成base64图片
+#### 秘钥生成base64图片
 
 ```go
 base64Img,_ :=googleauth.QrBase64(secretKey,"jmol","jmolboy",200)
 fmt.Print("base64:"+base64Img)
+```
+
+#### 基于秘钥获取Code
+
+```go
+code,_ := googleauth.GetCode(secretKey)
+fmt.Println("code:",code)
 ```
