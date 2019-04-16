@@ -61,12 +61,12 @@ func toUint32(bytes []byte) uint32 {
 		(uint32(bytes[2]) << 8) + uint32(bytes[3])
 }
 
-func GetCode(secretKey string) (uint32, error) {
+func GetCode(secretKey string) (string, error) {
 	value := toBytes(time.Now().Unix() / 30)
 	secretKeyUpper := strings.ToUpper(secretKey)
 	key, err := base32.StdEncoding.DecodeString(secretKeyUpper)
 	if err != nil {
-		return 0, err
+		return "", err
 	}
 
 	// sign the value using HMAC-SHA1
@@ -92,9 +92,7 @@ func GetCode(secretKey string) (uint32, error) {
 	// one million is the first number with 7 digits so the remainder
 	// of the division will always return < 7 digits
 	pwd := number % 1000000
-	pwdStr := string(pwd)
-	fmt.Println("pwd:" + pwdStr)
-	return pwd, nil
+	return string(pwd), nil
 }
 
 func QrCode(secret string, account string, issuer string, size int) ([]byte, error) {
