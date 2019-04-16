@@ -26,11 +26,11 @@ func RandSecret(strSize int, randType RandType) string {
 	var dictionary string
 
 	if randType == RandTypeAlphaNum {
-		dictionary = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+		dictionary = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	}
 
 	if randType == RandTypeAlpha {
-		dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+		dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	}
 
 	if randType == RandTypeNum {
@@ -92,7 +92,7 @@ func GetCode(secretKey string) (string, error) {
 	// one million is the first number with 7 digits so the remainder
 	// of the division will always return < 7 digits
 	pwd := number % 1000000
-	return string(pwd), nil
+	return fmt.Sprint(pwd), nil
 }
 
 func QrCode(secret string, account string, issuer string, size int) ([]byte, error) {
