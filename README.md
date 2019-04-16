@@ -5,7 +5,7 @@ google authenticator两步验证golang实现
 ## 添加引用
 
 ```shell
-go get 
+go get github.com/jmolboy/googleauth
 ```
 
 
